@@ -1,10 +1,12 @@
-// Params //
+//// Parameters
 // Number of curve points (higher = smoother)
 float N;
-float r; 
+// Noise scale (lower = smoother)
 float ns = 0.7;
-float d;
-int n_seeds = 10;
+// Number of blobs
+int n_blobs = 10;
+
+// Array of seeds
 PVector[] seeds;
 
 void setup()
@@ -68,9 +70,9 @@ void blob(float cx, float cy, float r, float time, float ns, boolean inv)
 // Procedure to update the parameters of the small blobs (centers and radii)
 void update_seeds()
 {
-	seeds = new PVector[n_seeds];
+	seeds = new PVector[n_blobs];
 	seeds[0] = new PVector(width/2, height/2, width/2);
-	for(int i = 1; i < 10; i++)
+	for(int i = 1; i < n_blobs; i++)
 	{
 		float cx = random(0,width/2);
 		float cy = random(0,height/2);
